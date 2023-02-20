@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (!isset($_SESSION)) {
+	session_start();
+}
 if (!$_SESSION["login"]) {
 	echo header("location: admin.php");
 }
@@ -28,8 +30,8 @@ if (!$_SESSION["login"]) {
 		$tblProduct = $p->GetAllProduct();
 		$i = 1;
 		if ($tblProduct) {
-			if (mysql_num_rows($tblProduct)) {
-				while ($rows = mysql_fetch_assoc($tblProduct)) {
+			if (mysqli_num_rows($tblProduct)) {
+				while ($rows = mysqli_fetch_assoc($tblProduct)) {
 					echo '<tr>';
 					echo '<td>' . $i++ . '</td>';
 					echo '<td>' . $rows["tensanpham"] . '</td>';

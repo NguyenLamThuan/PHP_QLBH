@@ -1,18 +1,18 @@
 <?php
-	class ketnoiDB{
-		function ketnoi(& $con){
-			$con = mysql_connect("localhost","usertest","123456");
-			mysql_set_charset("utf8");
-			if($con){
-				return mysql_select_db("databasetest");
-				
-			}else{ 
-				return false;
-			}
+class ketnoiDB
+{
+	function ketnoi(&$conn)
+	{
+		$conn = new mysqli("localhost", "usertest", "123", "databasetest");
+
+		if ($conn->connect_error) {
+			die("Connection failed: " . $conn->connect_error);
 		}
-		function dongketnoi($con){ 
-			mysql_close($con);
-		}			
-			
+		mysqli_set_charset($conn, 'utf8');
+		return $conn;
 	}
-?>
+	function dongketnoi($conn)
+	{
+		$conn->close();
+	}
+}

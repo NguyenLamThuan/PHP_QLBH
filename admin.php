@@ -26,7 +26,7 @@ session_start();
 				</li>
 				<li style="float:right">
 					<?php
-					if ($_SESSION["login"]) {
+					if (isset($_SESSION["login"])) {
 						echo '<a href="admin.php?dangxuat">Đăng xuất</a>';
 					}
 					?>
@@ -69,7 +69,7 @@ session_start();
 			}
 			//
 			else {
-				if ($_SESSION["login"]) {
+				if (isset($_SESSION["login"])) {
 					echo "Đăng nhập thành công tài khoản " . $_SESSION["login"];
 				} else {
 					include_once("View/DangNhap.php");
