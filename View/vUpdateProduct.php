@@ -6,13 +6,6 @@ if (!$_SESSION["login"]) {
 	echo header("location: admin.php");
 }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Untitled Document</title>
-</head>
 <?php
 include_once("Controller/cProduct.php");
 $p = new controlProduct();
@@ -84,43 +77,40 @@ if ($tblProduct) {
 			</tr>
 		</table>
 	</form>
-</body>
+	<?php
+	include_once("Controller/cProduct.php");
 
-</html>
-<?php
-include_once("Controller/cProduct.php");
+	if (isset($_REQUEST["btnsubmit"])) {
+		$id = $_REQUEST["txtid"];
+		$ten = $_REQUEST["txtTenSP"];
+		$gia = $_REQUEST["txtGiaSP"];
+		$giamgia = $_REQUEST["txtGiamGiaSP"];
+		$mota = $_REQUEST["txtMota"];
+		$cty = $_REQUEST["cboCty"];
+		$file = $_FILES["ffile"]["tmp_name"];
+		$type = $_FILES["ffile"]["type"];
+		$name = $_FILES["ffile"]["name"];
+		$size = $_FILES["ffile"]["size"];
+		if ($giamgia < $gia) {
+			$p = new controlProduct();
 
-if (isset($_REQUEST["btnsubmit"])) {
-	$id = $_REQUEST["txtid"];
-	$ten = $_REQUEST["txtTenSP"];
-	$gia = $_REQUEST["txtGiaSP"];
-	$giamgia = $_REQUEST["txtGiamGiaSP"];
-	$mota = $_REQUEST["txtMota"];
-	$cty = $_REQUEST["cboCty"];
-	$file = $_FILES["ffile"]["tmp_name"];
-	$type = $_FILES["ffile"]["type"];
-	$name = $_FILES["ffile"]["name"];
-	$size = $_FILES["ffile"]["size"];
-	if ($giamgia < $gia) {
-		$p = new controlProduct();
-
-		$kq = $p->UpdateProductById($id, $ten, $giamgia, $gia, $mota, $cty, $file, $name, $type, $size);
-		if ($kq == 1) {
-			echo "<script>alert('sửa dữ liệu thành công')</script>";
-			echo header("refresh: 0; url='index.php?Prod'");
-		} else if ($kq == 0) {
-			echo "<script>alert('Không thể sửa')</script>";
-		} else if ($kq == -1) {
-			echo "<script>alert('Không thể upload ảnh')</script>";
-		} else if ($kq == -2) {
-			echo "<script>alert('Size > 2MB')</script>";
-		} else if ($kq == -3) {
-			echo "<script>alert('Không đúng định dạng')</script>";
+			$kq = $p->UpdateProductById($id, $ten, $giamgia, $gia, $mota, $cty, $file, $name, $type, $size);
+			if ($kq == 1) {
+				echo "<script>alert('sửa dữ liệu thành công')</script>";
+				echo header("refresh: 0; url='index.php?Prod'");
+			} else if ($kq == 0) {
+				echo "<script>alert('Không thể sửa')</script>";
+			} else if ($kq == -1) {
+				echo "<script>alert('Không thể upload ảnh')</script>";
+			} else if ($kq == -2) {
+				echo "<script>alert('Size > 2MB')</script>";
+			} else if ($kq == -3) {
+				echo "<script>alert('Không đúng định dạng')</script>";
+			} else {
+				echo "Lỗi không xác định";
+			}
 		} else {
-			echo "Lỗi không xác định";
+			echo "<script>alert('Gia giam phai nho hon gia goc')</script>";
 		}
-	} else {
-		echo "<script>alert('Gia giam phai nho hon gia goc')</script>";
 	}
-}
-?>
+	?>

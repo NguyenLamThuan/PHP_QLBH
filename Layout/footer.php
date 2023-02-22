@@ -1,7 +1,2 @@
-<html lang="en">
-
-<body>
-    <p align='center'>sản phẩm cá nhân</p>
-</body>
-
-</html>
+<hr />
+<p>sản phẩm cá nhân</p>

@@ -12,16 +12,16 @@ session_start();
 
 <body>
 	<div>
-		<div>
+		<div class="header">
 			<?php require 'Layout/header.php' ?>
 		</div>
 		<div>
 			<?php require 'Layout/menu.php' ?>
 		</div>
 		<div class="main" style="margin-bottom: 0px;">
-			<table style="width: 100%">
+			<table class="content">
 				<tr>
-					<td class="menu" align="center">
+					<td class="menu">
 						<div class="row">
 							<div class="left" style="background-color:#bbb;">
 								<h2>Menu</h2>
@@ -55,7 +55,7 @@ session_start();
 				</tr>
 			</table>
 		</div>
-		<div align='center'>
+		<div class="footer">
 			<?php require 'Layout/footer.php' ?>
 		</div>
 	</div>
