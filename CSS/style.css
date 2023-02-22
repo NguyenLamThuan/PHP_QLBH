@@ -11,6 +11,7 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+
 }
 
 * {
@@ -87,5 +88,12 @@ body {
 
 .active {
     background-color: #04AA6D;
+
+}
+
+.main {
+    width: 100%;
+    height: auto;
+    margin: auto;
 
 }

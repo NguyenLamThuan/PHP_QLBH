@@ -11,65 +11,54 @@ session_start();
 </head>
 
 <body>
-	<table border="1" style="width:960px;text-align:center;margin: auto;">
-		<tr>
-			<td colspan="2">
-				<img src="image/images.jpg" width="100%" height="350px">
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<ul class="admin">
-
-					<li class="active">
-						<a href="index.php">Home</a>
-					</li>
-					<li>
-						<a href="admin.php">Quản lý sản phẩm</a>
-					</li>
-				</ul>
-
-
-			</td>
-		</tr>
-		<tr>
-			<td class="menu" align="center">
-				<div class="row">
-					<div class="left" style="background-color:#bbb;">
-						<h2>Menu</h2>
-						<form><input type="text" name="search" placeholder="Tìm kiếm...." required />
-							<input type="submit" class="search" name="submit" value="Tìm kiếm" />
-						</form>
-						<ul id="myMenu">
-							<li>
-								<?php
-								include_once("View/vCompany.php");
-								?>
-							</li>
-						</ul>
-					</div>
-				</div>
+	<div>
+		<div>
+			<?php require 'Layout/header.php' ?>
+		</div>
+		<div>
+			<?php require 'Layout/menu.php' ?>
+		</div>
+		<div class="main" style="margin-bottom: 0px;">
+			<table style="width: 100%">
+				<tr>
+					<td class="menu" align="center">
+						<div class="row">
+							<div class="left" style="background-color:#bbb;">
+								<h2>Menu</h2>
+								<form><input type="text" name="search" placeholder="Tìm kiếm...." required />
+									<input type="submit" class="search" name="submit" value="Tìm kiếm" />
+								</form>
+								<ul id="myMenu">
+									<li>
+										<?php
+										include_once("View/vCompany.php");
+										?>
+									</li>
+								</ul>
+							</div>
+						</div>
 
 
-			</td>
-			<td width="85%">
-				<?php
-				if (isset($_REQUEST["searchProd"])) {
-					include_once("View/vSearchProduct.php");
-				} else {
-					include_once("View/vProduct.php");
-				}
+					</td>
+					<td style="width:80%" align="center">
+						<?php
+						if (isset($_REQUEST["searchProd"])) {
+							include_once("View/vSearchProduct.php");
+						} else if (isset($_REQUEST["Comp"])) {
+							include_once("View/vProduct.php");
+						} else {
+							include_once('View/vPrdHome.php');
+						}
 
-				?>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<h3>Đây là trang web cá nhân</h3>
-				<h4>Luyện tập và nâng cao kỹ năng lập trình</h4>
-			</td>
-		</tr>
-	</table>
+						?>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div align='center'>
+			<?php require 'Layout/footer.php' ?>
+		</div>
+	</div>
 
 </body>
 

@@ -53,58 +53,61 @@ if (isset($_REQUEST["btnsubmit"])) {
 ?>
 
 <body>
+	<div>
+		<h2>THÊM SẢN PHẨM</h2>
+		<form action="#" method="post" enctype="multipart/form-data">
 
-	<h2>THÊM SẢN PHẨM</h2>
-	<form action="#" method="post" enctype="multipart/form-data">
-		<table style="margin: auto; text-align: left" border="1">
-			<tr>
-				<td>Công ty cung cấp</td>
-				<td>
-					<select name="cboCty">
-						<?php
-						include("Controller/cCompany.php");
-						$p = new controllerCompany();
-						$tblCompany = $p->getCompany();
-						if (mysqli_num_rows($tblCompany) > 0) {
-							while ($row = mysqli_fetch_assoc($tblCompany)) {
-								echo "<option value='" . $row["id_congty"] . "'>" . $row["tencongty"] . "</option>";
+			<table style="margin: auto; text-align: left">
+				<tr>
+					<td>Công ty cung cấp</td>
+					<td>
+						<select name="cboCty">
+							<?php
+							include("Controller/cCompany.php");
+							$p = new controllerCompany();
+							$tblCompany = $p->getCompany();
+							if (mysqli_num_rows($tblCompany) > 0) {
+								while ($row = mysqli_fetch_assoc($tblCompany)) {
+									echo "<option value='" . $row["id_congty"] . "'>" . $row["tencongty"] . "</option>";
+								}
 							}
-						}
-						?>
-					</select>
+							?>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Nhập tên sản phẩm</td>
+					<td><input type="text" name="txtTenSP" required></td>
+				</tr>
+				<tr>
+					<td>Nhập giá sản phẩm</td>
+					<td><input type="number" name="txtGiaSP" required></td>
+				</tr>
+				<tr>
+					<td>Nhập giá được giảm</td>
+					<td><input type="number" name="txtGiamGiaSP" required></td>
+				</tr>
+				<tr>
+					<td>Mô tả</td>
+					<td><textarea rows="5" cols="22" name="txtMota"></textarea></td>
+				</tr>
+
+				<tr>
+				<tr>
+					<td>Hình đại điện</td>
+					<td><input type="file" name="ffile" required</td>
+				</tr>
+
+				<td></td>
+				<td>
+					<input type="submit" name="btnsubmit" value="Thêm">
+					<input type="reset" value="Nhập lại">
 				</td>
-			</tr>
-			<tr>
-				<td>Nhập tên sản phẩm</td>
-				<td><input type="text" name="txtTenSP" required></td>
-			</tr>
-			<tr>
-				<td>Nhập giá sản phẩm</td>
-				<td><input type="number" name="txtGiaSP" required></td>
-			</tr>
-			<tr>
-				<td>Nhập giá được giảm</td>
-				<td><input type="number" name="txtGiamGiaSP" required></td>
-			</tr>
-			<tr>
-				<td>Mô tả</td>
-				<td><textarea rows="5" cols="22" name="txtMota"></textarea></td>
-			</tr>
+				</tr>
+			</table>
+		</form>
+	</div>
 
-			<tr>
-			<tr>
-				<td>Hình đại điện</td>
-				<td><input type="file" name="ffile" required</td>
-			</tr>
-
-			<td></td>
-			<td>
-				<input type="submit" name="btnsubmit" value="Thêm">
-				<input type="reset" value="Nhập lại">
-			</td>
-			</tr>
-		</table>
-	</form>
 </body>
 
 </html>
